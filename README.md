@@ -1,4 +1,4 @@
-# Docker
+# Create Docker Image
 
 ## Build New Image
 
@@ -29,4 +29,17 @@ docker stop $CONTAINER
 
 ```bash
 docker run -it ychubachi/my_refinery /bin/bash
+```
+
+## Push to Docker hub
+
+```bash
+docker push ychubachi/my_refinery
+```
+
+# Use Docker Image
+
+```bash
+docker pull ychubachi/my_refinery
+docker run -d -p 3000:3000 ychubachi/my_refinery
 ```
