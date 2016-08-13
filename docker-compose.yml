@@ -3,4 +3,5 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
+      - "80:3000"
+# later, add nginx, database and so on.
