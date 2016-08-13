@@ -5,8 +5,9 @@ ENV APP_ROOT /app_root
 
 # Install apt packages
 RUN apt-get update -qq && \
-    apt-get install -y nodejs --no-install-recommends
-RUN rm -rf /var/lib/apt/lists/*
+    apt-get install -y nodejs --no-install-recommends && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Set up bundler
 RUN echo 'gem: --no-document' > /etc/gemrc
@@ -19,7 +20,7 @@ COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
 RUN bundle install
 
-# Add App
+# Add App to WORKDIR
 ADD . $APP_ROOT
 
 # Run Server
